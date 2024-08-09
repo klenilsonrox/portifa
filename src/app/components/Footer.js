@@ -1,5 +1,5 @@
-import { FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
+import { FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 function Footer() {
     return (
