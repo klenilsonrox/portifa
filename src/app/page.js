@@ -1,113 +1,118 @@
-import Image from "next/image";
+
+'use client'
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import Header from './components/Header';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+      <div className='bg-[rgb(14,16,19)]'>
+        <div className="bg-[rgb(14,16,19)] text-white min-h-screen w-full max-w-7xl mx-auto flex flex-col justify-between p-4">
+          <main className="flex-grow max-w-7xl mx-auto p-4">
+              {/* Seção Sobre Mim */}
+              <section id="about" className="my-8 text-center">
+                  <img
+                      src="https://img.freepik.com/vetores-gratis/hacker-operando-uma-ilustracao-do-icone-dos-desenhos-animados-laptop-conceito-de-icone-de-tecnologia-isolado-estilo-flat-cartoon_138676-2387.jpg?semt=ais_hybrid"
+                      alt="Clenilson"
+                      className="mx-auto w-48 h-48 rounded-full border-4 border-[#B452FF]"
+                  />
+                  <h2 className="text-4xl font-bold mt-4">Clenilson Brandão</h2>
+                  <p className="mt-2 text-gray-400">Tenho 2 anos e meio de estudo em desenvolvimento de software, com experiência em Node.js, React.js, Next.js, Tailwind CSS, MongoDB, PostgreSQL, Prisma, MySQL, e muito mais.</p>
+              </section>
+
+              {/* Seção de Skills */}
+              <section id="skills" className="my-12">
+                  <h2 className="text-3xl font-bold text-center mb-8">Skills</h2>
+                  <div className="flex justify-center w-full max-w-[375px] lg:max-w-7xl overflow-x-scroll lg:overflow-x-auto lg:flex-wrap space-x-4 px-4">
+                      {['HTML', 'CSS', 'JavaScript', 'ReactJS', 'NextJS', 'TailwindCSS', 'MongoDB', 'Express', 'NodeJS', 'Postgres', 'MySQL', 'Prisma'].map((skill, index) => (
+                          <motion.div
+                              key={index}
+                              className="bg-[#282A2D] shadow-lg rounded-lg px-4 py-2 text-center text-[#B452FF] m-2"
+                              whileHover={{ scale: 1.05 }}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: index * 0.1 }}
+                          >
+                              {skill}
+                          </motion.div>
+                      ))}
+                  </div>
+              </section>
+
+              {/* Projetos */}
+              <section id="projects" className="my-12">
+                  <h2 className="text-3xl font-bold text-center mb-8">Projetos</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Projeto rxCampanhas */}
+                      <motion.div 
+                          className="bg-[#282A2D] shadow-lg rounded-lg overflow-hidden"
+                          whileHover={{ scale: 1.05 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5 }}
+                      >
+                          <img src="./images/rifa.png" alt="rxCampanhas" className="w-full h-48 object-cover" />
+                          <div className="p-4">
+                              <h3 className="text-2xl font-semibold text-[#B452FF]">rxCampanhas</h3>
+                              <p className="mt-2 text-gray-400">Projeto de rifas onde os usuários podem comprar rifas e administradores podem gerenciar as rifas. Tecnologias usadas: Next.js, TailwindCSS, MongoDB...</p>
+                              <a href="https://rxcampanhas.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-[#B452FF] text-white px-4 py-2 rounded-md hover:bg-[#9a3ccc]">Ver Projeto</a>
+                          </div>
+                      </motion.div>
+                      
+                      {/* Projeto RxBank */}
+                      <motion.div 
+                          className="bg-[#282A2D] shadow-lg rounded-lg overflow-hidden"
+                          whileHover={{ scale: 1.05 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                          <img src="./images/banco.png" alt="RxBank" className="w-full h-48 object-cover" />
+                          <div className="p-4">
+                              <h3 className="text-2xl font-semibold text-[#B452FF]">RxBank</h3>
+                              <p className="mt-2 text-gray-400">Projeto de um banco fictício onde os usuários podem criar conta, fazer e receber transferências. Tecnologias usadas: Next.js, TailwindCSS, MongoDB...</p>
+                              <a href="https://rxbank.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-[#B452FF] text-white px-4 py-2 rounded-md hover:bg-[#9a3ccc]">Ver Projeto</a>
+                          </div>
+                      </motion.div>
+                  </div>
+              </section>
+
+              {/* Contato */}
+              <section id="contact" className="my-12 text-center">
+                  <h2 className="text-3xl font-bold mb-8">Contato</h2>
+                  <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8">
+                      <form className="w-full md:w-1/2 bg-[#282A2D] p-6 rounded-lg shadow-lg">
+                          <div className="mb-4">
+                              <label className="block text-left text-[#B452FF] mb-2" htmlFor="name">Nome</label>
+                              <input className="w-full p-2 rounded bg-[#0E1013] text-white border border-[#B452FF]" type="text" id="name" name="name" required />
+                          </div>
+                          <div className="mb-4">
+                              <label className="block text-left text-[#B452FF] mb-2" htmlFor="email">Email</label>
+                              <input className="w-full p-2 rounded bg-[#0E1013] text-white border border-[#B452FF]" type="email" id="email" name="email" required />
+                          </div>
+                          <div className="mb-4">
+                              <label className="block text-left text-[#B452FF] mb-2" htmlFor="message">Mensagem</label>
+                              <textarea className="w-full p-2 rounded bg-[#0E1013] text-white border border-[#B452FF]" id="message" name="message" rows="5" required></textarea>
+                          </div>
+                          <button className="w-full bg-[#B452FF] text-white py-2 rounded hover:bg-[#9a3ccc]">Enviar</button>
+                      </form>
+                      
+                      <div className="flex justify-center space-x-4 md:w-1/2">
+                          <a href="https://www.linkedin.com/in/clenilson-brandao/" target="_blank" rel="noopener noreferrer" className="text-[#B452FF] text-4xl hover:text-white">
+                              <FaLinkedin />
+                          </a>
+                          <a href="https://www.instagram.com/klenilsonrox" target="_blank" rel="noopener noreferrer" className="text-[#B452FF] text-4xl hover:text-white">
+                              <FaInstagram />
+                          </a>
+                          <a href="https://wa.me/+55031992311170" target="_blank" rel="noopener noreferrer" className="text-[#B452FF] text-4xl hover:text-white">
+                              <FaWhatsapp />
+                          </a>
+                      </div>
+                  </div>
+              </section>
+          </main>
+        
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
   );
 }
