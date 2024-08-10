@@ -31,7 +31,7 @@ function close(e){
   
   {modalProjeto && <Projeto  projeto={projeto} func={close} setState={setOpenModalProjeto}/> }
 
-     <div className="p-4 max-w-3xl mx-auto bg-[#282A2D] text-gray-200 border-gray-600 rounded-md border flex justify-between items-start min-h-[450px]" data-aos="fade-left">
+     <div className="p-4 max-w-3xl mx-auto bg-[#282A2D] text-gray-200 border-gray-600 rounded-md border flex justify-between items-start min-h-[450px] animaLeft">
       <div>
       <h1 className='text-2xl flex items-center gap-2  before:w-4 before:h-1 before:bg-[#B854FF] '>Projetos</h1>
       <div className='mt-4 grid  gap-4 max-h-[450px] overflow-y-scroll custom-scrollbar'>

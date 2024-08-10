@@ -56,6 +56,18 @@ body {
   animation: anime2 .5s ease-in-out;
 }
 
+.animaLeft{
+  animation: animaLeft .5s ease-in-out;
+}
+
+@keyframes animaLeft {
+  from{
+    transform: translateX(100px);
+  } to{
+    transform: translateX(0,0,0);
+  }
+}
+
 .hidd{
   height: 0px;
 }
@@ -119,3 +131,4 @@ body {
     visibility: visible;
   }
 }
+

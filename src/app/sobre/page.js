@@ -25,9 +25,9 @@ const page = () => {
   return (
     <>
     {modalContato && <Contato func={closeModalContato} setState={setOpenMOdalContato}/>}
-    <div className="p-4 max-w-3xl mx-auto text-gray-300 rounded-md border flex justify-between border-gray-600 items-start min-h-[600px] bg-[#282A2D]" data-aos="fade-left">
+    <div className="p-4 max-w-3xl mx-auto text-gray-300 rounded-md border flex justify-between border-gray-600 items-start min-h-[600px] bg-[#282A2D] ">
         
-      <div>
+      <div className='animaLeft overflow-hidden'>
       <h1 className='text-2xl flex items-center gap-2  before:w-4 before:h-1 before:bg-[#B854FF] '>Sobre mim</h1>
       <div className='flex flex-col gap-6'>
         <p className='text-sm my-4'>Sou desenvolvedor front-end com mais de 2 anos de experiência, adquirida principalmente por meio de projetos pessoais, procuro sempre desenvolver sites responsivos e otimizados para SEO, constantemente estudo mais sobre novas tecnologias e frameworks para poder aprimorar minhas capacidades para desenvolver.

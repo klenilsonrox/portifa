@@ -12,7 +12,7 @@ function openAbout(){
 }
 
   return (
-    <div className='lg:max-w-[230px]  w-full overflow-hidden rounded-md bg-[#282A2D] text-gray-200 relative border border-gray-600' data-aos="fade-left">
+    <div className='lg:max-w-[230px]  w-full overflow-hidden rounded-md bg-[#282A2D] text-gray-200 relative border border-gray-600 animaLeft'>
         <div>
         <img src="https://kbase.com.br/novo/wp-content/uploads/2019/06/linguagem-JavaScript.jpg" alt="" className='w-full max-h-[60px] object-cover' />
         </div>
