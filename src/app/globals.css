@@ -64,11 +64,58 @@ body {
   height: 210px;
 }
 
+.menu{
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
+  transition: .5s ease-in-out;
+}
+
+.menu.ativo{
+  height: 100vh;
+  overflow: auto;
+  visibility: visible;
+}
+
 @keyframes anime2 {
   from{
     height: 0px;
   }
   to{
     height: 210px;
+  }
+}
+
+.hamb{
+  width: 25px;
+  border-top: 3px solid #9933F8;
+}
+
+.hamb::after{
+  content:"";
+  width: 25px;
+  height: 3px;
+  background: #9933F8;
+  display: block;
+  margin-top: 6px;
+}
+
+.hamb.ativo::after{
+  transform: rotate (135deg);
+}
+
+.hamb::before{
+  content:"";
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #9933F8;
+  margin-top: 6px;
+}
+
+@media(max-width:1000px){
+  .menu{
+    overflow: auto;
+    visibility: visible;
   }
 }

@@ -7,7 +7,7 @@ const page = () => {
 
 
   return (
-    <div className="p-4 max-w-3xl mx-auto bg-[#282A2D] text-gray-200 border-gray-600 rounded-md border flex justify-between items-start min-h-[600px]" data-aos="fade-left">
+    <div className="p-4 max-w-3xl mx-auto bg-[#282A2D] text-gray-200 border-gray-600 rounded-md border flex justify-between items-start min-h-[400px]" data-aos="fade-left">
       <div>
       <h1 className='text-2xl flex items-center gap-2  before:w-4 before:h-1 before:bg-[#B854FF] '>Contato</h1>
       <div className='my-4'>
