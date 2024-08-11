@@ -36,8 +36,8 @@ function verFoto(){
     <>
     
     {cv && <div className='flex inset-0 fixed justify-center bg-white border-2 bg-opacity-15 backdrop-blur-sm p-2 z-50' id='cv' onClick={closeCv}>
+    <button className='fixed right-4 z-10 top-4 lg:top-2 bg-white lg:right-2 shadow-neumorph rounded-full p-2' onClick={()=>setOnCv(false)}><IoMdClose className='text-2xl'/></button>
       <div className='shadow-neumorph bg-gradient-to-br overflow-auto lg:overflow-hidden flex flex-col lg:flex-row from-[#E2E8EC] relative gap-6 to-[#ffffff] rounded-lg w-full max-w-4xl anima'>
-      <button className='absolute right-2 z-10 top-2 shadow-neumorph rounded-full p-2' onClick={()=>setOnCv(false)}><IoMdClose className='text-2xl'/></button>
       <div className='bg-blue-400 p-2 lg:overflow-y-scroll scrollbar-blue w-full max-w-[350px]'>
         <div>{!foto && <img src="./images/eu.jpg" alt="" className='w-[60px] h-[60px] rounded-full object-cover mx-auto' />}
         {foto && <img src="./images/eu.jpg" alt="" className='w-[250px] h-[250px] rounded-full object-cover mx-auto anima' />}
@@ -73,7 +73,7 @@ function verFoto(){
 
 
       </div>
-      <div className='mt-4 p-2 relative'>
+      <div className='mt-4 p-2'>
       <h1 className='text-[40px] font-bold text-blue-500 '> Clenilson Brandao</h1>
       <div className='mt-6 max-w-lg border-t border-black'>
         <p className='font-bold text-xl'>RESUMO</p>
