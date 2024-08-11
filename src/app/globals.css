@@ -24,3 +24,23 @@ body {
 .scrollbar-blue::-webkit-scrollbar-track {
   background-color: #BFDBFE; /* Cor do fundo da barra de rolagem */
 }
+
+
+
+
+.anima{
+  animation: anime .5s ease-in-out;
+}
+
+@keyframes anime {
+  from{
+    transform: translate3d(0,-100px,0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to{
+    transform: translate3d(0,0,0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
