@@ -12,6 +12,9 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        neumorph: '7px 7px 12px #babecc, -7px -7px 12px #ffffff',
+      },
     },
   },
   plugins: [
