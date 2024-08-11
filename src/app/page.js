@@ -77,7 +77,7 @@ function verFoto(){
       <h1 className='text-[40px] font-bold text-blue-500 '> Clenilson Brandao</h1>
       <div className='mt-6 max-w-lg border-t border-black'>
         <p className='font-bold text-xl'>RESUMO</p>
-        <p>Tenho mais de 2 anos de experiência com desenvolvimento front-end, com foco em
+        <p>Tenho mais de 2 anos de experiência com desenvolvimento fullstack, com foco em
 frameworks como ReactJs e NextJs. Com sólido conhecimento técnico e
 dedicação para criar interfaces envolventes e intuitivas em projetos
 desafiadores.
