@@ -38,8 +38,8 @@ function verFoto(){
     {cv && <div className='flex inset-0 fixed justify-center bg-white border-2 bg-opacity-15 backdrop-blur-sm p-2 z-50' id='cv' onClick={closeCv}>
       <div className='shadow-neumorph bg-gradient-to-br overflow-auto lg:overflow-hidden flex flex-col lg:flex-row from-[#E2E8EC] gap-6 to-[#ffffff] rounded-lg w-full max-w-4xl anima'>
       <div className='bg-blue-400 p-2 lg:overflow-y-scroll scrollbar-blue w-full max-w-[350px]'>
-        <div>{!foto && <img src="./images/eu.jpg" alt="" className='lg:w-[60px] lg:h-[60px] lg:rounded-full object-cover mx-auto' />}
-        {foto && <img src="./images/eu.jpg" alt="" className='lg:w-[250px] lg:h-[250px] lg:rounded-full object-cover mx-auto' />}
+        <div>{!foto && <img src="./images/eu.jpg" alt="" className='w-[60px] h-[60px] rounded-full object-cover mx-auto' />}
+        {foto && <img src="./images/eu.jpg" alt="" className='w-[250px] h-[250px] rounded-full object-cover mx-auto anima' />}
         <button onClick={verFoto} className='flex items-center gap-2 mx-auto text-white'>{!foto ? "ver foto":"esconder foto"} {!foto ? <FaEye />:<FaEyeSlash />} </button>
         </div>
 
