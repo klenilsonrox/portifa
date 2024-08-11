@@ -126,10 +126,10 @@ o código-fonte.</li>
           </div>
         
           </div>
-          <p className='text-[31px] lg:text-[60px] font-bold lg:leading-10 leading-3 mt-4'>
+          <p className='text-[25px] lg:text-[60px] font-bold lg:leading-10 leading-3 mt-4'>
             Olá, eu sou <span className='text-[#FF014F]'>Clenilson,</span>
           </p>
-          <p className='text-[30px] lg:text-[50px] font-bold text-[#3C3E41] leading-3 lg:leading-10'>
+          <p className='text-[23px] lg:text-[50px] font-bold text-[#3C3E41] leading-3 lg:leading-10'>
             Desenvolvedor Web<span className='text-[60px]'>.</span>
           </p>
           <p className='mt-2 lg:mt-2 lg:text-xl text-[#7D7F83]'>
