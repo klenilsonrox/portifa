@@ -44,3 +44,58 @@ body {
     visibility: visible;
   }
 }
+
+
+.animaMenu{
+  animation: animaMenu .2s ease-in;
+}
+
+
+@keyframes animaMenu {
+  from{
+    width: 0px;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+  }
+  to{
+    width: 120px;
+    visibility: visible;
+    overflow: auto;
+    opacity: 1;
+  }
+}
+
+.hamb{
+  content: "";
+  border-top: 3px solid rgb(51, 50, 50);
+  width: 25px;
+  display: block;
+  position: relative;
+  margin-top: 2px;
+  transition: .3s ease-in-out;
+ 
+}
+
+.hamb::before,.hamb::after{
+  content: "";
+  width: 25px;
+  margin-top: 6px;
+  height: 3px;
+  display: block;
+  background-color: rgb(31, 30, 30);
+  transition: .3s ease-in-out;
+}
+
+.hamb.ativo{
+  border-top-color: transparent;
+}
+
+.hamb.ativo::before{
+  transform: rotate(135deg);
+}
+
+.hamb.ativo::after{
+  transform: rotate(-135deg);
+  margin-top: -3px;
+}
