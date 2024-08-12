@@ -29,10 +29,17 @@ const [foto,setFoto]=useState(false)
 const [projeto,setProjeto]=useState(false)
 const [modalProjeto,setModalProjeto]=useState(false)
 const [menu,setOpenMenu]=useState(false)
+const [name,setName]=useState("")
+const [email,setEmail]=useState("")
+const [message,setMessage]=useState("")
 
 function openCv(){
   setOnCv(true)
 }
+
+const email2 = process.env.EMAIL
+
+console.log(email2)
 
 function closeCv(e){
   if(e.target.id==="cv"){
@@ -64,9 +71,9 @@ function openMenu(){
     <>
 
     <div className='py-4 border-b-2 fixed top-0 right-0 left-0 bg-white bg-opacity-45 backdrop-blur-sm '>
-    <header className='max-w-7xl mx-auto flex justify-between px-4 '>
+    <header className='max-w-7xl mx-auto flex justify-between items-center px-4 '>
       <button className='absolute right-2 lg:hidden' onClick={openMenu}><span className={` transition-all hamb ${menu ? "ativo":""}`}></span></button>
-      <h1>KlenoDev</h1>
+      <Link href="/"><h1 className='font-bold'>Kleno<span className='text-[#FF014F]'>Dev</span> </h1></Link>
       <div>
       <nav className={`absolute lg:static right-0 flex items-end justify-end top-14 overflow-hidden ${!menu ? "w-0":"w-[120px]"} lg:w-auto ${menu ? "animaMenu":""}`}>
         <ul className='flex lg:gap-4 text-[#7D7F83] flex-col z-50 bg-white w-full pt-4 transition-all lg:pt-0 lg:static lg:bg-transparent lg:h-auto lg:flex-row h-screen px-4 '>
@@ -197,7 +204,7 @@ o código-fonte.</li>
             Desenvolvedor Web<span className='text-[60px]'>.</span>
           </p>
           <p className='mt-2 lg:mt-2 lg:text-xl text-[#7D7F83]'>
-            Sou o desenvolvedor web fullstack para uma #empresa em Lugar Nenhum, OR. Tenho uma grande paixão por efeitos de UI, animações e criação de experiências de usuário intuitivas e dinâmicas.
+            Sou o desenvolvedor web fullstack Freelancer em busca da primeira Oportunidade como desenvolvedor web. Tenho uma grande paixão por efeitos de UI, animações e criação de experiências de usuário intuitivas e dinâmicas.
           </p>
           <div className='flex gap-8  mb-4 lg:my-4'>
             <button className='bg-[#ECF0F3] text-[#FF014F] transition-all hover:bg-[#FF014F] hover:text-white   font-medium shadow-neumorph px-8 py-3 rounded-md' onClick={openCv}>
@@ -217,10 +224,10 @@ o código-fonte.</li>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] text-gray-500 font-bold pb-4 mt-2'>Sobre mim</h1>
     <p className='mt-6 lg:text-[17px] text-[#3e3e3f]'>
-      Olá, sou um desenvolvedor Front-End e posso construir seu site como você quiser. Posso personalizar o plugin e o tema do WordPress. E tenho dois anos de experiência no figma. Agora posso projetar seu portfólio.
+      Olá, sou um desenvolvedor web fullstack e posso construir seu site ou sistema como você quiser. Tenho mais de 2 anos de experiência em Html, Css, Javascript, ReactJs,NextJs ,NodeJs, Postgres, MongoDB. Agora posso projetar seu portfólio.
     </p>
     <p className='mt-6 text-[#3e3e3f] text-[17px] mb-2'>
-      Tenho três anos de experiência com HTML, CSS, JavaScript. E posso projetar seu aplicativo web.
+      Tenho mais de 2 anos de experiência com HTML, CSS, JavaScript, ReactJs etc. E posso projetar seu aplicativo web.
     </p>
   </div>
 </div>
@@ -272,9 +279,25 @@ o código-fonte.</li>
 
 <div className='w-full flex-1 mt-[60px] mb-10' id='contato'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Contato</h1>
+    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Contate-me</h1>
     <div>
-      contato
+     <form className='mt-6' action="https://formsubmit.co/klenilsoncoc@gmail.com" method="POST">
+      <div className='flex flex-col'>
+        <label htmlFor="name">Nome</label>
+        <input type="text" name='name' value={name} onChange={({target})=>setName(target.value)} className='bg-white border py-3 rounded-md outline-none pl-2' placeholder='Seu nome'/>
+      </div>
+      <div className='flex flex-col mt-4'>
+        <label htmlFor="email">Email</label>
+        <input type="email" name='email' value={email} onChange={({target})=>setEmail(target.value)} className='bg-white border py-3 rounded-md outline-none pl-2' placeholder='Seu email'/>
+      </div>
+      <input type="hidden" name="_captcha" value="false"></input>
+      <input type="hidden" name="_next" value="http://localhost:3000/obrigado"></input>
+      <div className='flex flex-col mt-4'>
+        <label htmlFor="message">Mensagem</label>
+        <textarea name="message" id="" cols="30" value={message} onChange={({target})=>setMessage(target.value)} rows="5" className='outline-none border rounded-md p-2' placeholder='Sua mensagem'></textarea>
+      </div>
+      <button className='px-8 py-2 rounded-md bg-[#FF014F] mt-2 text-white' type='submit'>ENVIAR</button>
+     </form>
     </div>
   </div>
 </div>
