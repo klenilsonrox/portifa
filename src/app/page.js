@@ -69,7 +69,7 @@ function openMenu(){
       <h1>KlenoDev</h1>
       <div>
       <nav className={`absolute lg:static right-0 flex items-end justify-end top-14 overflow-hidden ${!menu ? "w-0":"w-[120px]"} lg:w-auto ${menu ? "animaMenu":""}`}>
-        <ul className='flex lg:gap-4 flex-col z-50 bg-white w-full pt-4 transition-all lg:pt-0 lg:static lg:bg-transparent lg:h-auto lg:flex-row h-screen px-4 '>
+        <ul className='flex lg:gap-4 text-[#7D7F83] flex-col z-50 bg-white w-full pt-4 transition-all lg:pt-0 lg:static lg:bg-transparent lg:h-auto lg:flex-row h-screen px-4 '>
           <li><Link href="">Início</Link></li>
           <li><Link href="#sobre">Sobre mim</Link></li>
           <li><Link href="#projetos">Projetos</Link></li>
@@ -190,10 +190,10 @@ o código-fonte.</li>
           />
           
           </div>
-          <p className='text-[25px] lg:text-[60px] font-bold lg:leading-10 leading-3 mt-4'>
+          <p className='text-[25px] lg:text-[60px] font-bold lg:leading-10 leading-3 mt-4 text-gray-500'>
             Olá, eu sou <span className='text-[#FF014F]'>Clenilson,</span>
           </p>
-          <p className='text-[23px] lg:text-[50px] font-bold text-[#3C3E41] leading-3 lg:leading-10'>
+          <p className='text-[23px] lg:text-[50px] font-bold text-gray-500 leading-3 lg:leading-10'>
             Desenvolvedor Web<span className='text-[60px]'>.</span>
           </p>
           <p className='mt-2 lg:mt-2 lg:text-xl text-[#7D7F83]'>
@@ -215,7 +215,7 @@ o código-fonte.</li>
 
       <div className=' lg:mt-[100px]' id='sobre'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 mt-2'>Sobre mim</h1>
+    <h1 className='border-b border-gray-300 text-[30px] text-gray-500 font-bold pb-4 mt-2'>Sobre mim</h1>
     <p className='mt-6 lg:text-[17px] text-[#3e3e3f]'>
       Olá, sou um desenvolvedor Front-End e posso construir seu site como você quiser. Posso personalizar o plugin e o tema do WordPress. E tenho dois anos de experiência no figma. Agora posso projetar seu portfólio.
     </p>
@@ -227,7 +227,7 @@ o código-fonte.</li>
 
 <div className='w-full flex-1 mt-[60px]' id='habilidades'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4'>Habilidades</h1>
+    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Habilidades</h1>
     <div className='grid grid-cols-3 lg:grid-cols-4 gap-4 items-start mt-6'>
     <p className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] p-3 px-4 flex items-center justify-center flex-col rounded-md to-[#ffffff]'><RiHtml5Line   className='text-4xl text-[#FC4F13]'/> <span>HTML</span> </p>
     <p className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] p-3 rounded-md px-4 flex items-center justify-center flex-col to-[#ffffff]'><FaCss3Alt   className='text-4xl text-[#3D9DD7]'/><span>CSS</span></p>
@@ -245,7 +245,7 @@ o código-fonte.</li>
 
 <div className='w-full flex-1 mt-[60px]' id='projetos'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4'>Projetos</h1>
+    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Projetos</h1>
     <div className='flex flex-col gap-1 mt-6'>
     {projetos.map((projeto,index)=> (
       <div>
@@ -259,7 +259,7 @@ o código-fonte.</li>
 
 <div className='w-full flex-1 mt-[60px] mb-10' id='servicos'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 '>Serviços</h1>
+    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Serviços</h1>
     <ul className='mt-6 flex flex-col gap-2 lg:text-[17px] text-[#3e3e3f]'>
     <li className='before:w-2 before:h-1 before:bg-[#FF014F] before:block flex items-center gap-2'>Desenvolvimento de Sites e Aplicativos Web Personalizados</li>
       <li className='before:w-2 before:h-1 before:bg-[#FF014F] before:block flex items-center gap-2'>Criação de Landing Pages Otimizadas para Conversão</li>
@@ -272,7 +272,7 @@ o código-fonte.</li>
 
 <div className='w-full flex-1 mt-[60px] mb-10' id='contato'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
-    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 '>Contato</h1>
+    <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Contato</h1>
     <div>
       contato
     </div>
