@@ -70,6 +70,19 @@ function openMenu(){
   return (
     <>
 
+<div className='flex gap-2 mt-4 items-center justify-center mb-4 fixed flex-col right-2'>
+  <div className='shadow-neumorph p-2 rounded-full'>
+  <Link href="https://wa.me/55031992311170?text=Ol%C3%A1,%20vim%20pelo%20seu%20portf%C3%B3lio" target='_blank'><FaWhatsappSquare className='text-2xl'/></Link>
+  </div>
+  <div className='shadow-neumorph p-2 rounded-full'>
+  <Link href="https://www.linkedin.com/in/clenilson-brandao/" target='_blank'><FaLinkedin className='text-2xl'/></Link>
+  </div>
+  <div className='shadow-neumorph p-2 rounded-full'>
+  <Link href="https://www.instagram.com/klenilsonrox" target='_blank'><FaInstagramSquare className='text-2xl'/></Link>
+  </div>
+</div>
+
+
     <div className='py-4 border-b-2 fixed top-0 right-0 left-0 bg-white bg-opacity-45 backdrop-blur-sm '>
     <header className='max-w-7xl mx-auto flex justify-between items-center px-4 '>
       <button className='absolute right-2 lg:hidden' onClick={openMenu}><span className={` transition-all hamb ${menu ? "ativo":""}`}></span></button>
