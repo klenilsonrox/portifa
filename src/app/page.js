@@ -304,7 +304,7 @@ o código-fonte.</li>
         <input type="email" name='email' value={email} onChange={({target})=>setEmail(target.value)} className='bg-white border py-3 rounded-md outline-none pl-2' placeholder='Seu email'/>
       </div>
       <input type="hidden" name="_captcha" value="false"></input>
-      <input type="hidden" name="_next" value="http://localhost:3000/obrigado"></input>
+      <input type="hidden" name="_next" value="https://klenodev.vercel.app/obrigado"></input>
       <div className='flex flex-col mt-4'>
         <label htmlFor="message">Mensagem</label>
         <textarea name="message" id="" cols="30" value={message} onChange={({target})=>setMessage(target.value)} rows="5" className='outline-none border rounded-md p-2' placeholder='Sua mensagem'></textarea>
