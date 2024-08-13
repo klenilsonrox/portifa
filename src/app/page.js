@@ -122,7 +122,7 @@ function openMenu(){
   </div>
   </div>}
     
-    {cv && <div className='flex inset-0 fixed justify-center bg-white border-2 bg-opacity-15 backdrop-blur-sm p-2 ' id='cv' onClick={closeCv}>
+    {cv && <div className='flex inset-0 fixed justify-center bg-white border-2 bg-opacity-15 backdrop-blur-sm p-2 z-30' id='cv' onClick={closeCv}>
     <button className='fixed right-4 top-4 lg:top-2 bg-white lg:right-2 shadow-neumorph rounded-full p-2' onClick={()=>setOnCv(false)}><IoMdClose className='text-2xl'/></button>
       <div className='shadow-neumorph bg-gradient-to-br overflow-auto lg:overflow-hidden flex flex-col lg:flex-row from-[#E2E8EC]  gap-6 to-[#ffffff] rounded-lg w-full max-w-4xl anima'>
       <div className='bg-blue-400 p-2 lg:overflow-y-scroll scrollbar-blue w-full max-w-[350px]'>
@@ -131,7 +131,7 @@ function openMenu(){
         <button onClick={verFoto} className='flex items-center gap-2 mx-auto text-white'>{!foto ? "ver foto":"esconder foto"} {!foto ? <FaEye />:<FaEyeSlash />} </button>
         </div>
 
-        <div className='text-white mt-6  border-t '>
+        <div className='text-white mt-6  border-t'>
           <p className='text-xl font-bold'>Contato</p>
           <a href='https://wa.me/55031992311170?text=Ol%C3%A1,%20vim%20pelo%20seu%20portf%C3%B3lio' target='_blank' className='flex items-center gap-2'><BsFillTelephoneMinusFill className='text-xl'/> 031992311170</a>
           <a href='mailto:klenilsoncoc@gmail.com' className='flex items-center gap-2'><FaTelegramPlane  className='text-xl'/> klenilsoncoc@gmail.com</a>
@@ -160,7 +160,7 @@ function openMenu(){
 
 
       </div>
-      <div className='mt-4 p-2'>
+      <div className='mt-4 p-2 overflow-y-scroll scrollbar-blue'>
       <h1 className='text-[40px] font-bold text-blue-500 '> Clenilson Brandao</h1>
       <div className='mt-6 max-w-lg border-t border-black'>
         <p className='font-bold text-xl'>RESUMO</p>
@@ -187,12 +187,51 @@ diária e prestar um serviço de alta qualidade.
 andamento das operações dentro dos prazos estabelecidos.</li>
 <li>Planejamento e execução de atividades, contribuindo para o bom
 andamento das operações dentro dos prazos estabelecidos.</li>
-
 <li>Utilização de ferramentas de controle de versão, como Git, gerenciando
 o código-fonte.</li>
-
-  </ul>
+</ul>
 </div>
+
+<div className='mt-6'>
+  <p className='font-bold text-xl border-t border-black'>FORMAÇÂO ACADÊMICA</p>
+  <div className='mt-2'>
+    <p className='leading-4'>HTML e CSS para iniciantes</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>Javascript completo ES6</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>React completo</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>Typescript para iniciantes</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>React com typescript</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>NextJs</p>
+    <small className='strong font-bold'>Origamid</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>Banco de dados</p>
+    <small className='strong font-bold'>b7Web</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>Javascript</p>
+    <small className='strong font-bold'>b7Web</small>
+  </div>
+  <div className='mt-2'>
+    <p className='leading-4'>ReactJs</p>
+    <small className='strong font-bold'>b7Web</small>
+  </div>
+</div>
+
 
       </div>
       </div>
