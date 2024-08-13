@@ -279,7 +279,7 @@ o código-fonte.</li>
       Olá, sou um desenvolvedor web fullstack e posso construir seu site ou sistema como você quiser. Tenho mais de 2 anos de experiência em Html, Css, Javascript, ReactJs,NextJs ,NodeJs, Postgres, MongoDB. Agora posso projetar seu portfólio.
     </p>
     <p className='mt-6 text-[#3e3e3f] text-[17px] mb-2'>
-      Tenho mais de 2 anos de experiência com HTML, CSS, JavaScript, ReactJs etc. E posso projetar seu aplicativo web.
+      e aí, vamos contruir algo juntos?.
     </p>
   </div>
 </div>
