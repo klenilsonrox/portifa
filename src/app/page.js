@@ -1,5 +1,7 @@
 'use client'
-import React, { useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import React, { useEffect, useState } from 'react';
 import { FaNodeJs } from "react-icons/fa";
 import { RiReactjsFill,RiNextjsFill,RiHtml5Line,RiTailwindCssFill  } from "react-icons/ri";
 import { FaCss3Alt } from "react-icons/fa";
@@ -33,13 +35,14 @@ const [name,setName]=useState("")
 const [email,setEmail]=useState("")
 const [message,setMessage]=useState("")
 
+useEffect(()=>{
+  AOS.init();
+},[])
+
 function openCv(){
   setOnCv(true)
 }
 
-const email2 = process.env.EMAIL
-
-console.log(email2)
 
 function closeCv(e){
   if(e.target.id==="cv"){
@@ -49,6 +52,10 @@ function closeCv(e){
 
 function verFoto(){
   setFoto(foto=>!foto)
+}
+
+function closeMenu(){
+  setOpenMenu(false)
 }
 
 function selectProjeto(index){
@@ -90,11 +97,11 @@ function openMenu(){
       <div>
       <nav className={`absolute lg:static right-0 flex items-end justify-end top-14 overflow-hidden ${!menu ? "w-0":"w-[120px]"} lg:w-auto ${menu ? "animaMenu":""}`}>
         <ul className='flex lg:gap-4 text-[#7D7F83] flex-col z-50 bg-white w-full pt-4 transition-all lg:pt-0 lg:static lg:bg-transparent lg:h-auto lg:flex-row h-screen px-4 '>
-          <li><Link href="">Início</Link></li>
-          <li><Link href="#sobre">Sobre mim</Link></li>
-          <li><Link href="#projetos">Projetos</Link></li>
-          <li><Link href="#habilidades">Habilidades</Link></li>
-          <li><Link href="#contato">Contato</Link></li>
+          <li><Link onClick={closeMenu} href="">Início</Link></li>
+          <li><Link onClick={closeMenu} href="#sobre">Sobre mim</Link></li>
+          <li><Link onClick={closeMenu} href="#projetos">Projetos</Link></li>
+          <li><Link onClick={closeMenu} href="#habilidades">Habilidades</Link></li>
+          <li><Link onClick={closeMenu} href="#contato">Contato</Link></li>
         </ul>
       </nav>
       </div>
@@ -116,7 +123,7 @@ function openMenu(){
     </div>
     <div className='mt-6 flex justify-between'>
       <Link href={projeto.link} target='_blank' className='shadow-neumorph px-6 py-2 rounded-md flex items-center gap-2'><IoIosLink /> Ver projeto</Link>
-      <button>Voltar</button>
+      <button onClick={()=>setModalProjeto(false)}>Voltar</button>
     </div>
     </div>
   </div>
@@ -249,12 +256,10 @@ o código-fonte.</li>
           />
           
           </div>
-          <p className='text-[25px] lg:text-[60px] font-bold lg:leading-10 leading-3 mt-4 text-gray-500'>
-            Olá, eu sou <span className='text-[#FF014F]'>Clenilson,</span>
-          </p>
-          <p className='text-[23px] lg:text-[50px] font-bold text-gray-500 leading-3 lg:leading-10'>
-            Desenvolvedor Web<span className='text-[60px]'>.</span>
-          </p>
+          <div className='text-[25px] lg:text-[60px] text-center leading-5 font-bold lg:leading-10 flex flex-col  text-gray-500'>
+            <p>Olá, eu sou <span className='text-[#FF014F] '>Clenilson</span></p> <span className='mt-4'>Desenvolvedor Web</span>
+          </div>
+          
           <p className='mt-2 lg:mt-2 lg:text-xl text-[#7D7F83]'>
             Sou o desenvolvedor web fullstack Freelancer em busca da primeira Oportunidade como desenvolvedor web. Tenho uma grande paixão por efeitos de UI, animações e criação de experiências de usuário intuitivas e dinâmicas.
           </p>
@@ -272,7 +277,7 @@ o código-fonte.</li>
 
       <div className='w-full flex-1'>
 
-      <div className=' lg:mt-[100px]' id='sobre'>
+      <div className=' lg:mt-[100px] animaLeft' id='sobre' >
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] text-gray-500 font-bold pb-4 mt-2'>Sobre mim</h1>
     <p className='mt-6 lg:text-[17px] text-[#3e3e3f]'>
@@ -284,7 +289,7 @@ o código-fonte.</li>
   </div>
 </div>
 
-<div className='w-full flex-1 mt-[60px]' id='habilidades'>
+<div className='w-full flex-1 mt-[60px] animaRight' id='habilidades'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Habilidades</h1>
     <div className='grid grid-cols-3 lg:grid-cols-4 gap-4 items-start mt-6'>
@@ -302,7 +307,7 @@ o código-fonte.</li>
   </div>
 </div>
 
-<div className='w-full flex-1 mt-[60px]' id='projetos'>
+<div className='w-full flex-1 mt-[60px] animaRight' id='projetos'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Projetos</h1>
     <div className='flex flex-col gap-1 mt-6'>
@@ -316,7 +321,7 @@ o código-fonte.</li>
 </div>
 
 
-<div className='w-full flex-1 mt-[60px] mb-10' id='servicos'>
+<div className='w-full flex-1 mt-[60px] mb-10 animaRight' id='servicos'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Serviços</h1>
     <ul className='mt-6 flex flex-col gap-2 lg:text-[17px] text-[#3e3e3f]'>
@@ -329,7 +334,7 @@ o código-fonte.</li>
   </div>
 </div>
 
-<div className='w-full flex-1 mt-[60px] mb-10' id='contato'>
+<div className='w-full flex-1 mt-[60px] mb-10 animaRight' id='contato'>
   <div className='shadow-neumorph bg-gradient-to-br from-[#E2E8EC] to-[#ffffff] rounded-lg p-6'>
     <h1 className='border-b border-gray-300 text-[30px] font-bold pb-4 text-gray-500'>Contate-me</h1>
     <div>

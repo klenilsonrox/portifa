@@ -46,6 +46,37 @@ body {
 }
 
 
+.animaLeft{
+  animation: animaLeft .5s ease-in-out;
+}
+
+@keyframes animaLeft {
+  from{
+    transform: translate3d(100px,0,0);
+
+  }
+  to{
+    transform: translate3d(0,0,0);
+
+  }
+}
+
+.animaRight{
+  animation: animaRight .5s ease-in-out;
+}
+
+@keyframes animaRight{
+  from{
+    transform: translate3d(-100px,0,0);
+
+  }
+  to{
+    transform: translate3d(0,0,0);
+
+  }
+}
+
+
 .animaMenu{
   animation: animaMenu .2s ease-in;
 }
