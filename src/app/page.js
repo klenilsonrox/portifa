@@ -363,6 +363,7 @@ o código-fonte.</li>
 <footer className='py-3 flex items-center justify-center text-gray-700'>
   <div className='mt-4'>
 <p className='text-medium'>KlenoDev 2024 todos os direitos reservados!</p>
+<Link href="https://www.removeragua.com" target='_blank' className='flex items-center gap-2 underline'><IoIosLink className='text-2xl'/>remover água</Link>
 <div className='flex gap-2 mt-4 items-center justify-center mb-4'>
   <div className='shadow-neumorph p-2 rounded-full'>
   <Link href="https://wa.me/55031992311170?text=Ol%C3%A1,%20vim%20pelo%20seu%20portf%C3%B3lio" target='_blank'><FaWhatsappSquare className='text-2xl'/></Link>
