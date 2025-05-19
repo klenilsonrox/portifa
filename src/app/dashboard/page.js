@@ -7,7 +7,8 @@ import { Pencil, Trash2 } from "lucide-react"
 import DeleteConfirmation from "../components/delete-confirmation"
 import EditProductModal from "../components/edit-modal"
 import { getToken } from "../actions/getToken"
-
+import { baseUrl } from "../../../baseUrl"
+import { useRouter } from "next/navigation"
 export default function Dashboard() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
@@ -16,7 +17,27 @@ export default function Dashboard() {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  async function verifyUser(params) {
+        try {
+            const token = await getToken()
+           const res = await fetch(`http://localhot:4000/api/auth/profile`,{
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+           }) 
+
+           const data = await res.json()
+           console.log(data)
+
+        } catch (error) {
+            console.log(error)
+        }
+  }
+
   useEffect(() => {
+    verifyUser()
     fetchProducts()
     fetchCategories()
   }, [])
