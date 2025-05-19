@@ -1,18 +1,25 @@
 'use client'
+import { useEffect, useState } from "react"
 import { baseUrl } from "../../../baseUrl"
 import Footer from "../components/produtos/Footer"
 import Header from "../components/produtos/Header"
 import ProductList from "../components/produtos/product-list"
 
 // Função para buscar todos os produtos
-async function getProducts() {
+
+
+export default  function Home() {
+  const [products,setProducts] = useState([])
+
+  async function getProducts() {
   try {
     const res = await fetch(`${baseUrl}/products`,
+     
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     }
     )
     
@@ -21,15 +28,17 @@ async function getProducts() {
     }
     
     const data = await res.json()
-    return data.data
+    setProducts(data.data)
+   
   } catch (error) {
     console.error("Erro ao buscar produtos:", error)
     return []
   }
 }
 
-export default async function Home() {
-  const products = await getProducts()
+useEffect(()=>{
+  getProducts()
+},[])
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50">

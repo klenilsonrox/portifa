@@ -24,8 +24,10 @@ export default function ProductCard({ product }) {
       </Link>
 
       <div className="p-4">
+       <Link href={`/produtos/${product._id}`} className="font-semibold text-lg text-gray-800 line-clamp-2 h-14">{product._id} aa</Link>
         <Link href={`/produtos/${product.slug}`}>
           <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 h-14">{product.name}</h3>
+  
         </Link>
 
         <div className="mt-4 flex justify-between items-center">
