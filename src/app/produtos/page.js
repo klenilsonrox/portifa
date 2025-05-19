@@ -4,15 +4,18 @@ import { baseUrl } from "../../../baseUrl"
 import Footer from "../components/produtos/Footer"
 import Header from "../components/produtos/Header"
 import ProductList from "../components/produtos/product-list"
+import Loading from "../components/produtos/loading"
 
 // Função para buscar todos os produtos
 
 
 export default  function Home() {
   const [products,setProducts] = useState([])
+  const [loading,setLoading] = useState(false)
 
   async function getProducts() {
   try {
+    setLoading(true)
     const res = await fetch(`${baseUrl}/products`,
      
     {
@@ -33,6 +36,8 @@ export default  function Home() {
   } catch (error) {
     console.error("Erro ao buscar produtos:", error)
     return []
+  }finally{
+    setLoading(false)
   }
 }
 
@@ -54,7 +59,9 @@ useEffect(()=>{
             </p>
           </div>
           
-          <ProductList products={products} />
+          <div className="min-h-[600px] flex justify-center">
+            {loading ? <Loading /> : <ProductList products={products} />}
+          </div>
         </section>
       </main>
       
