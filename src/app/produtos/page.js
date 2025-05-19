@@ -8,7 +8,6 @@ import ProductList from "../components/produtos/product-list"
 async function getProducts() {
   try {
     const res = await fetch(`${baseUrl}/products`, { 
-      next: { revalidate: 1 } 
     })
     
     if (!res.ok) {
