@@ -7,9 +7,14 @@ import ProductList from "../components/produtos/product-list"
 // Função para buscar todos os produtos
 async function getProducts() {
   try {
-    const res = await fetch(`${baseUrl}/products`, { 
-      next: { revalidate: 1 }
-    })
+    const res = await fetch(`${baseUrl}/products`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }
+    )
     
     if (!res.ok) {
       throw new Error("Falha ao buscar produtos")
