@@ -18,13 +18,13 @@ export default function ProductList({ products }) {
 
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {products.map((product) => (
         <div
           key={product._id}
           className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl relative"
         >
-          <Link href={`/produto/${product.slug}`}>
+          <Link href={`/categorias/produto/${product.slug}`}>
             <div className="relative h-48 w-full bg-gray-100">
               <img 
                 src={product.imageUrl || "/placeholder.svg"} 
