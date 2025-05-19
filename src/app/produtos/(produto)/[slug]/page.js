@@ -2,7 +2,8 @@ import Footer from "@/app/components/produtos/Footer"
 import Header from "@/app/components/produtos/Header"
 import { ArrowLeft, ExternalLink, Star, Truck, Tag, CreditCard } from 'lucide-react'
 import Link from "next/link"
-import baseUrl from "../../../../../baseUrl"
+import { baseUrl } from "../../../../../baseUrl"
+
 
 // Função para formatar o preço em formato brasileiro
 function formatPrice(price) {
