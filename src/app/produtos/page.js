@@ -8,6 +8,7 @@ import ProductList from "../components/produtos/product-list"
 async function getProducts() {
   try {
     const res = await fetch(`${baseUrl}/products`, { 
+      next: { revalidate: 1 }
     })
     
     if (!res.ok) {
@@ -15,7 +16,6 @@ async function getProducts() {
     }
     
     const data = await res.json()
-    console.log(data)
     return data.data
   } catch (error) {
     console.error("Erro ao buscar produtos:", error)
