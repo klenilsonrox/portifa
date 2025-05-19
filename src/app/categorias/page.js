@@ -77,7 +77,7 @@ export default function Page() {
   const fetchProductsByCategory = async (slug) => {
     try {
       setLoading(true)
-      const response = await fetch(`http://localhost:4000/api/categories/${slug}`)
+      const response = await fetch(`${baseUrl}/categories/${slug}`)
       const data = await response.json()
 
       if (data.success) {

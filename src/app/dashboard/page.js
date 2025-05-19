@@ -16,11 +16,11 @@ export default function Dashboard() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [loading, setLoading] = useState(true)
-
-  async function verifyUser(params) {
+const router = useRouter()
+  async function verifyUser() {
         try {
             const token = await getToken()
-           const res = await fetch(`http://localhot:4000/api/auth/profile`,{
+           const res = await fetch(`${baseUrl}/auth/profile`,{
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -29,15 +29,22 @@ export default function Dashboard() {
            }) 
 
            const data = await res.json()
-           console.log(data)
+   
+          if(!data.user){
+            router.push("/auth/login")
+          }
 
         } catch (error) {
             console.log(error)
         }
   }
 
+  useEffect(()=>{
+verifyUser()
+  },[])
+  
+
   useEffect(() => {
-    verifyUser()
     fetchProducts()
     fetchCategories()
   }, [])
@@ -45,7 +52,7 @@ export default function Dashboard() {
   const fetchProducts = async () => {
     try {
       setLoading(true)
-      const response = await fetch("http://localhost:4000/api/products")
+      const response = await fetch(`${baseUrl}/products`)
       const result = await response.json()
 
       if (result.success) {
@@ -60,7 +67,7 @@ export default function Dashboard() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/categories")
+      const response = await fetch(`${baseUrl}/categories`)
       const result = await response.json()
 
       if (result.success) {
@@ -84,7 +91,7 @@ export default function Dashboard() {
   const handleDeleteConfirm = async () => {
     try {
       const token =await getToken()
-      const response = await fetch(`http://localhost:4000/api/products/${selectedProduct._id}`, {
+      const response = await fetch(`${baseUrl}/products/${selectedProduct._id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -110,7 +117,7 @@ export default function Dashboard() {
 
       // Se não há produto selecionado, estamos criando um novo
       if (!selectedProduct) {
-        const response = await fetch(`http://localhost:4000/api/products`, {
+        const response = await fetch(`${baseUrl}/products`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -127,7 +134,7 @@ export default function Dashboard() {
         }
       } else {
         // Caso contrário, estamos atualizando um existente
-        const response = await fetch(`http://localhost:4000/api/products/${selectedProduct._id}`, {
+        const response = await fetch(`${baseUrl}/products/${selectedProduct._id}`, {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`,
