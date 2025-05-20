@@ -14,11 +14,11 @@ function formatPrice(price) {
   })
 }
 
-export default function ProductList({ products }) {
+export default function ProductListCategory({ products }) {
 
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
       {products.map((product) => (
         <div
           key={product._id}
@@ -38,7 +38,7 @@ export default function ProductList({ products }) {
           </Link>
           
           <div className="p-4">
-            <Link href={`/produtos/${product.slug}`}>
+            <Link href={`/categorias/produto/${product.slug}`}>
               <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 h-14 hover:text-purple-600 transition-colors">
                 {product.name}
               </h3>
@@ -63,7 +63,7 @@ export default function ProductList({ products }) {
             
             <div className="mt-4 flex justify-between items-center">
               <Link
-                href={`/produtos/${product.slug}`}
+                href={`/categorias/produto/${product.slug}`}
                 className="text-purple-600 hover:text-purple-800 font-medium flex items-center"
               >
                 <ShoppingBag className="mr-1 h-4 w-4" />

@@ -1,50 +1,150 @@
+"use client"
+import { useEffect, useState } from "react"
+import { baseUrl } from "../../../../baseUrl"
 import Footer from "@/app/components/produtos/Footer"
 import Header from "@/app/components/produtos/Header"
-import { ArrowLeft, ExternalLink, Star, Truck, Tag, CreditCard } from 'lucide-react'
+import ProductList from "@/app/components/produtos/product-list"
+import Loading from "@/app/components/produtos/loading"
+import { ArrowLeft } from 'lucide-react'
 import Link from "next/link"
-import { baseUrl } from "../../../../baseUrl"
+import ProductListCategory from "@/app/components/produtos/product-list-category"
 
-
-
-// Função para formatar o preço em formato brasileiro
-function formatPrice(price) {
-  // Converte para número e depois para string formatada
-  const numPrice = typeof price === 'string' ? Number(price.replace(",", ".")) : price
-  return numPrice.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
+export default function CategoryPage({ params }) {
+  const [categoryData, setCategoryData] = useState(null)
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [pagination, setPagination] = useState({
+    total: 0,
+    page: 1,
+    pages: 1,
+    limit: 10,
   })
-}
 
-// Função para buscar um produto por slug
-async function getProductBySlug(slug) {
-  try {
-    const res = await fetch(`${baseUrl}/products/slug/${slug}`, {
-      next: { revalidate: 1 },
-    })
+  async function getCategoryProducts(page = 1) {
+    try {
+      setLoading(true)
+      const res = await fetch(
+        `${baseUrl}/categories/${params.slug}?page=${page}&limit=${pagination.limit}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
 
-    if (!res.ok) {
-      throw new Error(`Falha ao buscar produto com slug: ${slug}`)
+      if (!res.ok) {
+        throw new Error("Falha ao buscar produtos da categoria")
+      }
+
+      const data = await res.json()
+      setCategoryData(data.data.category)
+      setProducts(data.data.products)
+      setPagination(data.data.pagination)
+    } catch (error) {
+      console.error("Erro ao buscar produtos da categoria:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    getCategoryProducts(pagination.page)
+  }, [params.slug, pagination.page])
+
+  // Função para ir para a próxima página
+  const nextPage = () => {
+    if (pagination.page < pagination.pages) {
+      setPagination((prev) => ({ ...prev, page: prev.page + 1 }))
+    }
+  }
+
+  // Função para ir para a página anterior
+  const prevPage = () => {
+    if (pagination.page > 1) {
+      setPagination((prev) => ({ ...prev, page: prev.page - 1 }))
+    }
+  }
+
+  // Função para ir para uma página específica
+  const goToPage = (page) => {
+    setPagination((prev) => ({ ...prev, page }))
+  }
+
+  // Renderiza os botões de paginação
+  const renderPaginationButtons = () => {
+    const buttons = []
+    const maxButtons = 5 // Número máximo de botões de página para mostrar
+
+    let startPage = Math.max(1, pagination.page - Math.floor(maxButtons / 2))
+    const endPage = Math.min(pagination.pages, startPage + maxButtons - 1)
+
+    // Ajusta o startPage se estamos no final
+    if (endPage - startPage + 1 < maxButtons) {
+      startPage = Math.max(1, endPage - maxButtons + 1)
     }
 
-    const data = await res.json()
-    console.log(data)
-    return data.data
-  } catch (error) {
-    console.error(`Erro ao buscar produto com slug ${slug}:`, error)
-    return null
+    // Botão para primeira página
+    if (startPage > 1) {
+      buttons.push(
+        <button key="first" onClick={() => goToPage(1)} className="px-3 py-1 mx-1 rounded border hover:bg-gray-100">
+          1
+        </button>
+      )
+
+      if (startPage > 2) {
+        buttons.push(
+          <span key="dots1" className="mx-1">
+            ...
+          </span>
+        )
+      }
+    }
+
+    // Botões de página
+    for (let i = startPage; i <= endPage; i++) {
+      buttons.push(
+        <button
+          key={i}
+          onClick={() => goToPage(i)}
+          className={`px-3 py-1 mx-1 rounded border ${
+            pagination.page === i ? "bg-purple-600 text-white" : "hover:bg-gray-100"
+          }`}
+        >
+          {i}
+        </button>
+      )
+    }
+
+    // Botão para última página
+    if (endPage < pagination.pages) {
+      if (endPage < pagination.pages - 1) {
+        buttons.push(
+          <span key="dots2" className="mx-1">
+            ...
+          </span>
+        )
+      }
+
+      buttons.push(
+        <button
+          key="last"
+          onClick={() => goToPage(pagination.pages)}
+          className="px-3 py-1 mx-1 rounded border hover:bg-gray-100"
+        >
+          {pagination.pages}
+        </button>
+      )
+    }
+
+    return buttons
   }
-}
 
-export default async function ProductPage({ params }) {
-  const product = await getProductBySlug(params.slug)
-
-  if (!product) {
+  if (!categoryData && !loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 to-blue-50">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-purple-700 mb-4">Produto não encontrado</h1>
+          <h1 className="text-3xl font-bold text-purple-700 mb-4">Categoria não encontrada</h1>
           <Link href="/categorias" className="text-purple-600 hover:text-purple-800 flex items-center justify-center">
             <ArrowLeft className="mr-2" /> Voltar para a página inicial
           </Link>
@@ -53,15 +153,6 @@ export default async function ProductPage({ params }) {
     )
   }
 
-  // Calcular preço com desconto fictício para demonstração
-  const originalPrice = Number(product.price.replace(",", "."))
-  const discountPercentage = 12 // 12% de desconto
-  const discountedPrice = originalPrice * (1 - discountPercentage / 100)
-  
-  // Calcular parcelas (exemplo: 12x sem juros)
-  const installments = 12
-  const installmentValue = originalPrice / installments
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50">
       <Header />
@@ -69,107 +160,58 @@ export default async function ProductPage({ params }) {
       <main className="container mx-auto py-12 px-4">
         <div className="mb-6">
           <Link href="/categorias" className="text-purple-600 hover:text-purple-800 flex items-center w-fit">
-            <ArrowLeft className="mr-2" /> Voltar para a página inicial
+            <ArrowLeft className="mr-2" /> Voltar para categorias
           </Link>
         </div>
 
-        <div className="bg-white rounded-xl shadow-xl overflow-hidden p-6 md:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative h-80 md:h-96 bg-white rounded-lg overflow-hidden">
-              <img
-                src={product.imageUrl || "/placeholder.svg"}
-                alt={product.name}
-                className="object-contain p-4 w-full h-full"
-              />
-              <div className="absolute top-4 left-4 bg-pink-500 text-white text-sm font-bold px-3 py-1 rounded-full">
-                {product.category.name}
-              </div>
-            </div>
+        <section>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-purple-700 mb-3">
+              Produtos na categoria: {categoryData?.name}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Confira nossa seleção de produtos incríveis nesta categoria com os melhores preços do mercado.
+            </p>
+          </div>
+          <div className="min-h-[600px] flex flex-col justify-between">
+            {loading ? <Loading /> : <ProductListCategory products={products} />}
 
-            <div className="flex flex-col">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">{product.name}</h1>
-              
-              {/* Seção de preço melhorada */}
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-xl mb-6 border border-purple-100">
-                
-                
-                <div className="flex items-baseline">
-                  <p className="text-3xl font-bold text-purple-700">
-                
-                     R$ {Number(product.price?.replace(",", ".")).toFixed(2)}
-                  </p>
-                </div>
-                
-               
-              </div>
-
-
-              <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg mb-6">
-                <h3 className="font-semibold text-purple-700 mb-2">Características:</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
-                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    Produto original com garantia
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
-                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    Envio rápido para todo o Brasil
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
-                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    Melhor preço garantido
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex items-center mb-6">
-                <Truck className="text-purple-600 mr-2" />
-                <span className="text-gray-700">Frete grátis para todo o Brasil</span>
-              </div>
-
-              <div className="mt-auto">
-                <a
-                  href={product.affiliateLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-6 rounded-lg flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-colors text-lg font-bold"
+            {/* Paginação */}
+            {!loading && pagination.pages > 1 && (
+              <div className="flex justify-center items-center mt-8 flex-wrap">
+                <button
+                  onClick={prevPage}
+                  disabled={pagination.page === 1}
+                  className={`px-4 py-2 mx-1 rounded border ${
+                    pagination.page === 1 ? "bg-gray-200 cursor-not-allowed" : "hover:bg-gray-100"
+                  }`}
                 >
-                  <ExternalLink className="mr-2" />
-                  Comprar agora no Mercado Livre
-                </a>
-                <p className="text-xs text-gray-500 mt-2 text-center">
-                  Você será redirecionado para o site do vendedor
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                  Anterior
+                </button>
 
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-purple-700 mb-6">Descrição do Produto</h2>
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <p className="text-gray-700 leading-relaxed">
-              Este {product.name} é um produto de alta qualidade disponível com as melhores condições do mercado.
-              Aproveite esta oferta exclusiva e garanta já o seu!
-            </p>
-            <p className="text-gray-700 leading-relaxed mt-4">
-              Ao comprar através do nosso link de afiliado, você não paga nada a mais por isso e ainda nos ajuda a
-              manter este site com as melhores ofertas para você.
-            </p>
+                <div className="flex mx-2">{renderPaginationButtons()}</div>
+
+                <button
+                  onClick={nextPage}
+                  disabled={pagination.page === pagination.pages}
+                  className={`px-4 py-2 mx-1 rounded border ${
+                    pagination.page === pagination.pages ? "bg-gray-200 cursor-not-allowed" : "hover:bg-gray-100"
+                  }`}
+                >
+                  Próxima
+                </button>
+              </div>
+            )}
+
+            {/* Informações da paginação */}
+            {!loading && products.length > 0 && (
+              <div className="text-center text-gray-500 mt-4">
+                Mostrando {products.length} de {pagination.total} produtos | Página {pagination.page} de{" "}
+                {pagination.pages}
+              </div>
+            )}
           </div>
-        </div>
+        </section>
       </main>
 
       <Footer />

@@ -1,68 +1,126 @@
 "use client"
 
-import { ExternalLink, ShoppingBag } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import Footer from "@/app/components/produtos/Footer"
+import Header from "@/app/components/produtos/Header"
+import { ArrowLeft, ExternalLink, Star, Truck, Tag, CreditCard } from 'lucide-react'
 import { useState } from "react"
 
 export default function ProductCategoryCard({ product }) {
   const [isHovered, setIsHovered] = useState(false)
-
+console.log(product)
   return (
-    <div
-      className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Link href={`/produtos/${product.slug}`}>
-        <div className="relative h-48 w-full bg-gray-100">
-          <img src={product.imageUrl || "/placeholder.svg"} alt={product.name} fill className="object-contain p-4" />
-          <div className="absolute top-2 right-2 bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-            {product.category.name}
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50">
+     <Header />
+
+      <main className="container mx-auto py-12 px-4">
+        <div className="mb-6">
+          <Link href={`/categorias/${product.category.slug}`} className="text-purple-600 hover:text-purple-800 flex items-center w-fit">
+            <ArrowLeft className="mr-2" />  {`/categorias/ ${product.category.slug}`}
+          </Link>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-xl overflow-hidden p-6 md:p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative h-80 md:h-96 bg-white rounded-lg overflow-hidden">
+              <img
+                src={product.imageUrl || "/placeholder.svg"}
+                alt={product.name}
+                className="object-contain p-4 w-full h-full"
+              />
+              <div className="absolute top-4 left-4 bg-pink-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+                {product.category.name}
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">{product.name}</h1>
+              
+              {/* Seção de preço melhorada */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-xl mb-6 border border-purple-100">
+                
+                
+                <div className="flex items-baseline">
+                  <p className="text-3xl font-bold text-purple-700">
+                
+                     R$ {Number(product.price?.replace(",", ".")).toFixed(2)}
+                  </p>
+                </div>
+                
+               
+              </div>
+
+
+              <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg mb-6">
+                <h3 className="font-semibold text-purple-700 mb-2">Características:</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
+                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    Produto original com garantia
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
+                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    Envio rápido para todo o Brasil
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-purple-500 rounded-full p-1 mr-2 mt-0.5">
+                      <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    Melhor preço garantido
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex items-center mb-6">
+                <Truck className="text-purple-600 mr-2" />
+                <span className="text-gray-700">Frete grátis para todo o Brasil</span>
+              </div>
+
+              <div className="mt-auto">
+                <a
+                  href={product.affiliateLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-6 rounded-lg flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-colors text-lg font-bold"
+                >
+                  <ExternalLink className="mr-2" />
+                  Comprar agora no Mercado Livre
+                </a>
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  Você será redirecionado para o site do vendedor
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </Link>
 
-      <div className="p-4">
-        <Link href={`/produtos/${product.slug}`}>
-          <h3 className="font-semibold text-lg text-gray-800 line-clamp-2 h-14">{product.name}</h3>
-  
-        </Link>
-
-        <div className="mt-4 flex justify-between items-center">
-          <Link
-            href={`/produto/${product.slug}`}
-            className="text-purple-600 hover:text-purple-800 font-medium flex items-center"
-          >
-            <ShoppingBag className="mr-1 h-4 w-4" />
-            Ver detalhes
-          </Link>
-
-          <a
-            href={product.affiliateLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1.5 rounded-lg flex items-center hover:from-purple-600 hover:to-pink-600 transition-colors"
-            onClick={(e) => {
-              e.stopPropagation()
-            }}
-          >
-            <ExternalLink className="mr-1 h-4 w-4" />
-            Comprar
-          </a>
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-purple-700 mb-6">Descrição do Produto</h2>
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <p className="text-gray-700 leading-relaxed">
+              Este {product.name} é um produto de alta qualidade disponível com as melhores condições do mercado.
+              Aproveite esta oferta exclusiva e garanta já o seu!
+            </p>
+            <p className="text-gray-700 leading-relaxed mt-4">
+              Ao comprar através do nosso link de afiliado, você não paga nada a mais por isso e ainda nos ajuda a
+              manter este site com as melhores ofertas para você.
+            </p>
+          </div>
         </div>
-      </div>
+      </main>
 
-      {isHovered && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center p-6 opacity-0 hover:opacity-100 transition-opacity">
-          <Link
-            href={`/produtos/${product.slug}`}
-            className="bg-white text-purple-600 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-purple-50 transition-colors"
-          >
-            Ver detalhes
-          </Link>
-        </div>
-      )}
+      <Footer />
     </div>
   )
 }

@@ -5,10 +5,10 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
       <div className="container mx-auto py-12 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="flex justify-between flex-col lg:flex-row gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Ofertas Incríveis</h3>
-            <p className="text-white/80">
+            <p className="text-white/80  max-w-[400px]">
               Encontre as melhores ofertas de produtos com preços incríveis. Site de afiliados com os melhores produtos
               do mercado.
             </p>
@@ -25,64 +25,16 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Links Rápidos</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-white/80 hover:text-white transition-colors">
-                  Início
-                </Link>
-              </li>
-              <li>
-                <Link href="#categorias" className="text-white/80 hover:text-white transition-colors">
-                  Categorias
-                </Link>
-              </li>
-              <li>
-                <Link href="#sobre" className="text-white/80 hover:text-white transition-colors">
-                  Sobre Nós
-                </Link>
-              </li>
-              <li>
-                <Link href="#contato" className="text-white/80 hover:text-white transition-colors">
-                  Contato
-                </Link>
-              </li>
-            </ul>
-          </div>
+          
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Categorias</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                  Celulares
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                  Eletrônicos
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                  Informática
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                  Acessórios
-                </Link>
-              </li>
-            </ul>
-          </div>
+          
 
           <div>
             <h3 className="text-lg font-bold mb-4">Contato</h3>
             <ul className="space-y-2">
-              <li className="text-white/80">contato@ofertasincriveis.com</li>
-              <li className="text-white/80">(11) 99999-9999</li>
-              <li className="text-white/80">São Paulo, SP</li>
+              <li className="text-white/80">klenilsoncoc@gmail.com</li>
+              <li className="text-white/80">(31) 99231-1170</li>
+              <li className="text-white/80">Belo Horizonte, MG</li>
             </ul>
           </div>
         </div>

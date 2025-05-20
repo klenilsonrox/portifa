@@ -115,14 +115,14 @@ export default function Page() {
                 <h1 className="text-2xl font-bold mb-6">Categorias de Produtos</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {categories.map((category) => (
-                    <div
+                    <Link href={`/categorias/${category.slug}`}
                       key={category._id}
                       className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 cursor-pointer"
                       onClick={() => fetchProductsByCategory(category.slug)}
                     >
                       <h2 className="text-xl font-semibold capitalize">{category.name}</h2>
                       <p className="text-gray-500 text-sm mt-2">Clique para ver os produtos</p>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
