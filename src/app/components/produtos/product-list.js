@@ -61,7 +61,7 @@ export default function ProductList({ products, isLoading = true }) {
                 src={product.imageUrl || "/placeholder.svg"} 
                 alt={product.name}
                 className="w-full h-full object-contain p-4"
-              />Far
+              />
               <div className="absolute top-2 right-2 bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full">
                 {product.category.name}
               </div>
