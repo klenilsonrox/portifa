@@ -9,7 +9,7 @@ import { useState } from "react"
 
 export default function ProductCategoryCard({ product }) {
   const [isHovered, setIsHovered] = useState(false)
-console.log(product)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50">
      <Header />

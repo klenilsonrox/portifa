@@ -55,7 +55,7 @@ export default function ProductList({ products, isLoading = true }) {
           key={product._id}
           className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl relative"
         >
-          <Link href={`/produto/${product.slug}`}>
+          <Link href={`/produtos/${product.slug}`}>
             <div className="relative h-48 w-full bg-gray-100">
               <img 
                 src={product.imageUrl || "/placeholder.svg"} 
