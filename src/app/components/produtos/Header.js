@@ -1,7 +1,10 @@
 import { Sparkles } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react" // Importe o useState
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false) // Estado para controlar a visibilidade do menu
+
   return (
     <header className="bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
       <div className="container mx-auto py-6 px-4">
@@ -10,6 +13,8 @@ export default function Header() {
             <Sparkles className="mr-2" />
             Ofertas Incríveis
           </Link>
+          
+          {/* Menu para desktop (hidden em mobile) */}
           <nav className="hidden md:block">
             <ul className="flex space-x-6">
               <li>
@@ -22,20 +27,15 @@ export default function Header() {
                   Categorias
                 </Link>
               </li>
-              <li>
-                <Link href="#sobre" className="hover:text-pink-200 transition-colors">
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link href="#contato" className="hover:text-pink-200 transition-colors">
-                  Contato
-                </Link>
-              </li>
             </ul>
           </nav>
+          
+          {/* Botão para mobile */}
           <div className="md:hidden">
-            <button className="text-white p-2">
+            <button 
+              className="text-white p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)} // Alterna o estado ao clicar
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -48,6 +48,32 @@ export default function Header() {
             </button>
           </div>
         </div>
+        
+        {/* Menu para mobile (aparece quando isMenuOpen é true) */}
+        {isMenuOpen && (
+          <nav className="md:hidden mt-4">
+            <ul className="flex flex-col space-y-4">
+              <li>
+                <Link 
+                  href="/produtos" 
+                  className="hover:text-pink-200 transition-colors block py-2"
+                  onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar
+                >
+                  Início
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/categorias" 
+                  className="hover:text-pink-200 transition-colors block py-2"
+                  onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar
+                >
+                  Categorias
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   )

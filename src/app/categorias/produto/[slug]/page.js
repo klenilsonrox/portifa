@@ -12,7 +12,7 @@ const {slug}= await params
     });
 
     const produto = await response.json();
-    console.log(produto);
+ 
 
 
   return (
