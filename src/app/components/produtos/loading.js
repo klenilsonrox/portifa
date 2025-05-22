@@ -1,18 +1,32 @@
 export default function Loading() {
   return (
-    <div className=" flex items-center justify-center bg-gradient-to-br from-pink-50 to-blue-50">
-      <div className="text-center">
-        <div
-          className="inline-block h-16 w-16 animate-spin rounded-full border-4 border-solid border-purple-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Carregando...
-          </span>
-        </div>
-        <h2 className="mt-4 text-xl font-semibold text-purple-700">Carregando...</h2>
-        <p className="text-gray-600 mt-2">Aguarde enquanto buscamos os melhores produtos para você!</p>
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        {[...Array(10)].map((_, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-xl shadow-lg overflow-hidden"
+          >
+            {/* Skeleton para a imagem */}
+            <div className="relative h-48 w-full bg-gray-200 animate-pulse"></div>
+            
+            <div className="p-4">
+              {/* Skeleton para o título */}
+              <div className="h-6 bg-gray-200 rounded w-3/4 mb-3 animate-pulse"></div>
+              <div className="h-4 bg-gray-200 rounded w-full mb-4 animate-pulse"></div>
+              
+              {/* Skeleton para o preço */}
+              <div className="flex items-center mt-3 mb-4">
+                <div className="h-4 bg-gray-200 rounded w-16 animate-pulse"></div>
+              </div>
+              
+              {/* Skeleton para os botões */}
+              <div className="mt-4 flex justify-between items-center">
+                <div className="h-8 bg-gray-200 rounded w-24 animate-pulse"></div>
+                <div className="h-8 bg-gray-200 rounded w-20 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
   )
 }

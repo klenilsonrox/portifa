@@ -8,7 +8,7 @@ import Loading from "../components/produtos/loading"
 
 export default function Home() {
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [pagination, setPagination] = useState({
     total: 0,
     page: 1,
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
 
           <div className="min-h-[600px] flex flex-col justify-between">
-            {loading ? <Loading /> : <ProductList products={products} />}
+            {loading ? <Loading /> : <ProductList products={products} isLoading={loading} />}
 
             {/* Paginação */}
             {!loading && pagination.pages > 1 && (
