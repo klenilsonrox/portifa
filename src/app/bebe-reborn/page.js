@@ -31,7 +31,7 @@ const bonecas = [
       "/images/boneca04.webp",
       "/images/boneca05.webp",
     ],
-    price: "R$ 189,90",
+    price: "R$ 197,40",
     highlight: "Mais Vendida",
   },
   {
@@ -45,7 +45,7 @@ const bonecas = [
       "/images/boneca09.webp",
       "/images/boneca10.webp",
     ],
-    price: "R$ 159,90",
+    price: "R$ 197,40",
     highlight: "Melhor Custo-Benefício",
   },
   {
@@ -60,7 +60,7 @@ const bonecas = [
       "/images/boneca15.webp",
       "/images/boneca16.webp",
     ],
-    price: "R$ 299,90",
+    price: "R$ 329,00",
     highlight: "Premium",
   },
   {
@@ -76,7 +76,7 @@ const bonecas = [
       "/images/boneca22.webp",
       "/images/boneca23.webp",
     ],
-    price: "R$ 179,90",
+    price: "R$ 329,00",
     highlight: "Realismo Incrível",
   },
   {
@@ -84,7 +84,7 @@ const bonecas = [
     name: "Boneca Reborn Princesa Em Tecido Realista- 52 Cm",
     link: "https://mercadolivre.com/sec/2qv7Ku8",
     imgs: ["/images/boneca24.webp", "/images/boneca25.webp", "/images/boneca26.webp", "/images/boneca27.webp"],
-    price: "R$ 89,90",
+    price: "R$ 290,79",
     highlight: "Mais Barata",
   },
   {
@@ -99,7 +99,7 @@ const bonecas = [
       "/images/boneca32.webp",
       "/images/boneca33.webp",
     ],
-    price: "R$ 149,90",
+    price: "R$ 341,44",
     highlight: "Fofa e Realista",
   },
 ]
