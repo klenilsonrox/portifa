@@ -15,7 +15,7 @@ export default function WhatsAppRedirect() {
     const encodedMessage = encodeURIComponent(message);
     
     // Criar o link do WhatsApp
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}?text=${encodedMessage}`;
     
     // Redirecionar após um breve delay para melhor UX
     const timer = setTimeout(() => {
