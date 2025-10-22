@@ -15,11 +15,11 @@ export default function WhatsAppRedirect() {
     const encodedMessage = encodeURIComponent(message);
     
     // Criar o link do WhatsApp
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}?text=${encodedMessage}`;
     
     // Redirecionar após um breve delay para melhor UX
     const timer = setTimeout(() => {
-      window.location.href = 'https://wa.me/5531992311170?text=Ol%C3%A1%2C%20vim%20l%C3%A1%20do%20site%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV
+      window.location.href = 'https://api.whatsapp.com/send?phone=5531992311170?text=Ol%C3%A1%2C%20vim%20l%C3%A1%20do%20site%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV
 '
     }, 2000);
 
