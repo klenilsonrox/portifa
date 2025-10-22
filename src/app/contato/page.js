@@ -8,7 +8,7 @@ export default function WhatsAppRedirect() {
 
   useEffect(() => {
     // Número de telefone e mensagem pré-definida
-    const phoneNumber = '+5531992311170'; // Adicione o código do país (55 para Brasil)
+    const phoneNumber = '5531992311170'; // Adicione o código do país (55 para Brasil)
     const message = 'Olá, gostaria de fazer um teste do aplicativo IPTV';
     
     // Codificar a mensagem para URL
