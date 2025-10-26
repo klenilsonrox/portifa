@@ -8,7 +8,7 @@ export default function WhatsAppRedirect() {
 
   useEffect(() => {
     // Número de telefone e mensagem pré-definida
-    const phoneNumber = '5531992311170'; // Adicione o código do país (55 para Brasil)
+    const phoneNumber = '5531973316166'; // Adicione o código do país (55 para Brasil)
     const message = 'Olá, vim do site e gostaria de fazer um teste do IPTV';
     
     // Codificar a mensagem para URL
@@ -19,7 +19,7 @@ export default function WhatsAppRedirect() {
     
     // Redirecionar após um breve delay para melhor UX
     const timer = setTimeout(() => {
-      window.location.href = 'https://wa.me/5531992311170?text=Ol%C3%A1%2C%20vim%20l%C3%A1%20do%20site%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV
+      window.location.href = 'https://wa.me/5531973316166?text=Ol%C3%A1%2C%20vim%20l%C3%A1%20do%20site%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV
 '
     }, 2000);
 
@@ -64,7 +64,7 @@ export default function WhatsAppRedirect() {
         {/* Informações adicionais */}
         <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
           <p className="text-sm text-gray-600">
-            <strong>Número:</strong> (31) 99231-1170
+            <strong>Número:</strong> (31) 97331-6166
           </p>
           <p className="text-sm text-gray-600 mt-2">
             <strong>Mensagem:</strong> "Olá, vim la do site e gostaria de fazer um teste de IPTV"
@@ -78,7 +78,7 @@ export default function WhatsAppRedirect() {
           </p>
           <button 
             onClick={() => {
-              const phoneNumber = '5531992311170';
+              const phoneNumber = '5531973316166';
               const message = 'Olá, vim la do site, gostaria de fazer um teste do aplicativo IPTV';
               const encodedMessage = encodeURIComponent(message);
               window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
