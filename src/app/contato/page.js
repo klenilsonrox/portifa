@@ -19,11 +19,9 @@ export default function WhatsAppRedirect() {
     
     // Redirecionar após um breve delay para melhor UX
     const timer = setTimeout(() => {
-<<<<<<< HEAD
+
       window.location.href = 'https://wa.me/5531973316166?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20teste%20do%20aplicativo%20IPTV'
-=======
-      window.location.href = 'https://api.whatsapp.com/send?phone=5531973316166&text=Ol%C3%A1%2C%20vim%20do%20YouTube%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV'
->>>>>>> c03ab833a7dbab1483956ed03520e5d5557666ec
+
     }, 2000);
 
     return () => clearTimeout(timer);
