@@ -1,48 +1,44 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import Navbar from "./components/navbar"
-import Hero from "./components/hero"
-import About from "./components/about"
-import Skills from "./components/skills"
-import Projects from "./components/projets"
-import Contact from "./components/contact"
-import Footer from "./components/footer"
+// components/Home.js
+import React from "react";
+import Image from "next/image";
+import { FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
-  }, [])
-
-  if (isLoading) {
-    return (
-      <div className="h-screen w-full flex items-center justify-center bg-[#0E1013]">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-[#9634F6]"
-        >
-          CB
-        </motion.div>
-      </div>
-    )
-  }
-
   return (
-    <main className="min-h-screen bg-[#0E1013] text-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </main>
-  )
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#121212] text-white p-4">
+      {/* Foto de perfil */}
+      <div className="relative w-40 h-40 mb-6">
+        <Image
+          src="/images/perfil.jpg"
+          alt="Klenilson Rox"
+          layout="fill"
+          className="rounded-full border-4 border-[#0D0E0F]"
+        />
+      </div>
+
+      {/* Nome */}
+      <h1 className="text-3xl font-bold mb-2">Klenilson Rox</h1>
+
+      {/* Localização */}
+      <div className="flex flex-col items-center mb-4">
+      <p className="flex items-center gap-2 text-gray-500">
+          <FaMapMarkerAlt className="text-yellow-500" />Cachoeira de Pajeú 🌄
+        </p>
+        <p className="flex items-center gap-2 text-gray-300">
+          <FaMapMarkerAlt className="text-green-500" /> Belo Horizonte 📍
+        </p>
+      
+      </div>
+
+      {/* Contato WhatsApp */}
+      <a
+        href="https://wa.me/5531992311170"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 bg-green-600 hover:bg-green-700 transition-colors text-white font-semibold py-3 px-6 rounded-lg shadow-lg"
+      >
+        <FaWhatsapp size={24} /> Me mande uma mensagem
+      </a>
+    </div>
+  );
 }
