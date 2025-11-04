@@ -65,7 +65,7 @@ export default function WhatsAppRedirect() {
         {/* Informações adicionais */}
         <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
           <p className="text-sm text-gray-600">
-            <strong>Número:</strong> (31) 97331-6166
+            <strong>Número:</strong> (31) 99231-1170
           </p>
           <p className="text-sm text-gray-600 mt-2">
             <strong>Mensagem:</strong> "Olá, gostaria de fazer um teste do aplicativo IPTV"
