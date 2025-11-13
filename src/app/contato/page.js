@@ -22,7 +22,7 @@ export default function WhatsAppRedirect() {
 
       window.location.href = 'https://wa.me/5531973316166?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20teste%20do%20aplicativo%20IPTV'
 
-    }, 2000);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, []);
