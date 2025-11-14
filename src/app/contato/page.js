@@ -6,26 +6,21 @@ import Head from 'next/head';
 export default function WhatsAppRedirect() {
   const router = useRouter();
 
-  useEffect(() => {
-    // Número de telefone e mensagem pré-definida
-    const phoneNumber = '5531973316166'; // Adicione o código do país (55 para Brasil)
-    const message = 'Olá, gostaria de fazer um teste do aplicativo IPTV';
-    
-    // Codificar a mensagem para URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Criar o link do WhatsApp
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}?text=${encodedMessage}`;
-    
-    // Redirecionar após um breve delay para melhor UX
-    const timer = setTimeout(() => {
+useEffect(() => {
+  const phoneNumber = '5531973316166';
+  const message = 'Olá, gostaria de fazer um teste do aplicativo IPTV';
 
-      window.location.href = 'https://wa.me/5531973316166?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20teste%20do%20aplicativo%20IPTV'
+  const encodedMessage = encodeURIComponent(message);
 
-    }, 2000);
+  // Link correto que abre direto no WhatsApp
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    return () => clearTimeout(timer);
-  }, []);
+  const timer = setTimeout(() => {
+    window.location.href = whatsappUrl;
+  }, 0);
+
+  return () => clearTimeout(timer);
+}, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br bg-white flex items-center justify-center p-4">
