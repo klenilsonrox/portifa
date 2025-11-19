@@ -63,7 +63,7 @@ export default function WhatsAppRedirect() {
         {/* Informações adicionais */}
         <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
           <p className="text-sm text-gray-600">
-            <strong>Número:</strong> (15) 99823-4212
+            <strong>Número:</strong> (31) 97331-6166
           </p>
           <p className="text-sm text-gray-600 mt-2">
             <strong>Mensagem:</strong> "Olá, vim pelo seu video do youtube, gostaria de saber mais sobre a lista de canais!"
