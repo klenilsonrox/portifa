@@ -9,17 +9,21 @@ export default function WhatsAppRedirect() {
   useEffect(() => {
     // Número de telefone e mensagem pré-definida
     const phoneNumber = '5531973316166'; // Adicione o código do país (55 para Brasil)
-    const message = 'Olá, vim pelo seu video do youtube, gostaria de saber mais sobre a lista de canais!.';
+    const message = 'Olá, vim do youtubr gostaria de fazer um teste do IPTV';
     
     // Codificar a mensagem para URL
     const encodedMessage = encodeURIComponent(message);
     
     // Criar o link do WhatsApp
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}?text=${encodedMessage}`;
     
     // Redirecionar após um breve delay para melhor UX
     const timer = setTimeout(() => {
-      window.location.href = whatsappUrl;
+
+      window.location.href = 'https://wa.me/5531973316166?text=Ol%C3%A1%2C%20vim%20l%C3%A1%20do%20site%20e%20gostaria%20de%20fazer%20um%20teste%20do%20IPTV'
+
+     
+
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -66,7 +70,7 @@ export default function WhatsAppRedirect() {
             <strong>Número:</strong> (31) 97331-6166
           </p>
           <p className="text-sm text-gray-600 mt-2">
-            <strong>Mensagem:</strong> "Olá, vim pelo seu video do youtube, gostaria de saber mais sobre a lista de canais!"
+            <strong>Mensagem:</strong> "Olá, vim do youtube e gostaria de fazer um teste de IPTV"
           </p>
         </div>
 
@@ -78,13 +82,13 @@ export default function WhatsAppRedirect() {
           <button 
             onClick={() => {
               const phoneNumber = '5531973316166';
-              const message = 'Olá, gostaria de fazer um teste do aplicativo IPTV';
+              const message = 'Olá, vim la do site, gostaria de fazer um teste do aplicativo IPTV';
               const encodedMessage = encodeURIComponent(message);
               window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             }}
             className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
           >
-            Abrir WhatsApp.
+            Abrir WhatsApp
           </button>
         </div>
       </div>
