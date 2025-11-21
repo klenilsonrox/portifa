@@ -82,7 +82,7 @@ export default function WhatsAppRedirect() {
           <button 
             onClick={() => {
               const phoneNumber = '5531973316166';
-              const message = 'Olá, vim la do site, gostaria de fazer um teste do aplicativo IPTV';
+              const message = 'Olá, gostaria de fazer um teste do aplicativo IPTV';
               const encodedMessage = encodeURIComponent(message);
               window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             }}
