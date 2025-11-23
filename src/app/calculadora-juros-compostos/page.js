@@ -12,13 +12,9 @@ export default function CalculadoraJuros() {
   const [resultado, setResultado] = useState(null);
 
   const formatarInputMoeda = (valor) => {
-    // Remove tudo que não é número
     const apenasNumeros = valor.replace(/\D/g, '');
-    
-    // Converte para número e divide por 100 (centavos)
     const numero = parseFloat(apenasNumeros) / 100;
     
-    // Formata no padrão brasileiro
     if (apenasNumeros === '') return '';
     
     return numero.toLocaleString('pt-BR', {
@@ -28,15 +24,12 @@ export default function CalculadoraJuros() {
   };
 
   const formatarInputTaxa = (valor) => {
-    // Remove tudo que não é número
     const apenasNumeros = valor.replace(/\D/g, '');
     
     if (apenasNumeros === '') return '';
     
-    // Converte para número diretamente (sem divisão por 100)
     const numero = parseFloat(apenasNumeros);
     
-    // Formata no padrão brasileiro
     return numero.toLocaleString('pt-BR', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
@@ -45,7 +38,6 @@ export default function CalculadoraJuros() {
 
   const parseValorBR = (valor) => {
     if (!valor) return 0;
-    // Remove pontos de milhar e substitui vírgula por ponto
     return parseFloat(valor.replace(/\./g, '').replace(',', '.'));
   };
 
@@ -60,27 +52,22 @@ export default function CalculadoraJuros() {
       return;
     }
 
-    // Converter taxa anual para mensal
     if (tipoTaxa === 'anual') {
       taxaJuros = Math.pow(1 + taxaJuros, 1/12) - 1;
     }
 
-    // Converter anos para meses
     if (tipoPeriodo === 'anos') {
       meses = meses * 12;
     }
 
-    // Calcular mês a mês para a tabela
     const tabelaMensal = [];
     let saldoAcumulado = vInicial;
     let totalInvestido = vInicial;
     let totalJuros = 0;
 
     for (let mes = 1; mes <= meses; mes++) {
-      // Calcular juros do mês sobre o saldo
       const jurosMes = saldoAcumulado * taxaJuros;
       
-      // Adicionar aporte mensal
       saldoAcumulado += jurosMes + vMensal;
       totalInvestido += vMensal;
       totalJuros += jurosMes;
@@ -114,29 +101,29 @@ export default function CalculadoraJuros() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-4 px-3 sm:py-8 sm:px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center items-center gap-3 mb-4">
-            <FaChartLine className="text-emerald-400 text-5xl" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex justify-center items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <FaChartLine className="text-emerald-400 text-3xl sm:text-5xl" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">
+          <h1 className="text-2xl sm:text-4xl font-bold text-white mb-2 px-2">
             Calculadora de Juros Compostos
           </h1>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-sm sm:text-base px-2">
             Descubra quanto seu dinheiro pode render ao longo do tempo
           </p>
         </div>
 
         {/* Formulário */}
-        <div className="bg-gray-800 rounded-2xl shadow-2xl p-8 mb-6 border border-gray-700">
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 border border-gray-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             
             {/* Valor Inicial */}
-            <div>
-              <label className="flex items-center gap-2 text-gray-300 mb-2 font-medium">
-                <FaMoneyBillWave className="text-emerald-400" />
+            <div className="sm:col-span-2 md:col-span-1">
+              <label className="flex items-center gap-2 text-gray-300 mb-2 text-sm sm:text-base font-medium">
+                <FaMoneyBillWave className="text-emerald-400 flex-shrink-0" />
                 Valor Inicial (opcional)
               </label>
               <input
@@ -144,14 +131,14 @@ export default function CalculadoraJuros() {
                 value={valorInicial}
                 onChange={(e) => setValorInicial(formatarInputMoeda(e.target.value))}
                 placeholder="0,00"
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
               />
             </div>
 
             {/* Valor Mensal */}
-            <div>
-              <label className="flex items-center gap-2 text-gray-300 mb-2 font-medium">
-                <FaMoneyBillWave className="text-emerald-400" />
+            <div className="sm:col-span-2 md:col-span-1">
+              <label className="flex items-center gap-2 text-gray-300 mb-2 text-sm sm:text-base font-medium">
+                <FaMoneyBillWave className="text-emerald-400 flex-shrink-0" />
                 Aporte Mensal
               </label>
               <input
@@ -159,14 +146,14 @@ export default function CalculadoraJuros() {
                 value={valorMensal}
                 onChange={(e) => setValorMensal(formatarInputMoeda(e.target.value))}
                 placeholder="0,00"
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
               />
             </div>
 
             {/* Taxa de Juros */}
-            <div>
-              <label className="flex items-center gap-2 text-gray-300 mb-2 font-medium">
-                <FaPercentage className="text-emerald-400" />
+            <div className="sm:col-span-2 md:col-span-1">
+              <label className="flex items-center gap-2 text-gray-300 mb-2 text-sm sm:text-base font-medium">
+                <FaPercentage className="text-emerald-400 flex-shrink-0" />
                 Taxa de Juros
               </label>
               <div className="flex gap-2">
@@ -175,12 +162,12 @@ export default function CalculadoraJuros() {
                   value={taxa}
                   onChange={(e) => setTaxa(formatarInputTaxa(e.target.value))}
                   placeholder="0,00"
-                  className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
                 />
                 <select
                   value={tipoTaxa}
                   onChange={(e) => setTipoTaxa(e.target.value)}
-                  className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="w-32 bg-gray-900 border border-gray-700 rounded-lg px-2 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
                 >
                   <option value="mensal">% ao mês</option>
                   <option value="anual">% ao ano</option>
@@ -189,9 +176,9 @@ export default function CalculadoraJuros() {
             </div>
 
             {/* Período */}
-            <div>
-              <label className="flex items-center gap-2 text-gray-300 mb-2 font-medium">
-                <FaCalendarAlt className="text-emerald-400" />
+            <div className="sm:col-span-2 md:col-span-1">
+              <label className="flex items-center gap-2 text-gray-300 mb-2 text-sm sm:text-base font-medium">
+                <FaCalendarAlt className="text-emerald-400 flex-shrink-0" />
                 Período
               </label>
               <div className="flex gap-2">
@@ -200,12 +187,12 @@ export default function CalculadoraJuros() {
                   value={periodo}
                   onChange={(e) => setPeriodo(e.target.value)}
                   placeholder="0"
-                  className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
                 />
                 <select
                   value={tipoPeriodo}
                   onChange={(e) => setTipoPeriodo(e.target.value)}
-                  className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                  className="w-28 bg-gray-900 border border-gray-700 rounded-lg px-2 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-sm sm:text-base"
                 >
                   <option value="meses">Meses</option>
                   <option value="anos">Anos</option>
@@ -217,81 +204,81 @@ export default function CalculadoraJuros() {
           {/* Botão Calcular */}
           <button
             onClick={calcularJuros}
-            className="w-full mt-8 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold py-4 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+            className="w-full mt-6 sm:mt-8 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold py-3 sm:py-4 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base"
           >
-            <FaCalculator />
+            <FaCalculator className="flex-shrink-0" />
             Calcular Rendimento
           </button>
         </div>
 
         {/* Resultados */}
         {resultado && (
-          <div className="bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-700 animate-fadeIn">
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+          <div className="bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-700 animate-fadeIn">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">
               Resultados da Simulação
             </h2>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
               {/* Total Aplicado */}
-              <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-xl p-6 border border-blue-700">
+              <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-blue-700">
                 <div className="flex items-center gap-2 text-blue-300 mb-2">
-                  <FaMoneyBillWave />
-                  <span className="text-sm font-medium">Total Aplicado</span>
+                  <FaMoneyBillWave className="flex-shrink-0" />
+                  <span className="text-xs sm:text-sm font-medium">Total Aplicado</span>
                 </div>
-                <p className="text-3xl font-bold text-white">
-                  {formatarMoeda(resultado.totalAplicado)}
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white break-words">
+                  {formatarMoeda(parseFloat(resultado.totalAplicado))}
                 </p>
               </div>
 
               {/* Rendimento */}
-              <div className="bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-xl p-6 border border-emerald-700">
+              <div className="bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-emerald-700">
                 <div className="flex items-center gap-2 text-emerald-300 mb-2">
-                  <FaChartLine />
-                  <span className="text-sm font-medium">Rendimento Total</span>
+                  <FaChartLine className="flex-shrink-0" />
+                  <span className="text-xs sm:text-sm font-medium">Rendimento Total</span>
                 </div>
-                <p className="text-3xl font-bold text-white">
-                  {formatarMoeda(resultado.rendimento)}
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white break-words">
+                  {formatarMoeda(parseFloat(resultado.rendimento))}
                 </p>
               </div>
 
               {/* Montante Final */}
-              <div className="bg-gradient-to-br from-purple-900 to-purple-800 rounded-xl p-6 border border-purple-700">
+              <div className="bg-gradient-to-br from-purple-900 to-purple-800 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-purple-700 sm:col-span-2 lg:col-span-1">
                 <div className="flex items-center gap-2 text-purple-300 mb-2">
-                  <FaCalculator />
-                  <span className="text-sm font-medium">Valor Final</span>
+                  <FaCalculator className="flex-shrink-0" />
+                  <span className="text-xs sm:text-sm font-medium">Valor Final</span>
                 </div>
-                <p className="text-3xl font-bold text-white">
-                  {formatarMoeda(resultado.montanteFinal)}
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white break-words">
+                  {formatarMoeda(parseFloat(resultado.montanteFinal))}
                 </p>
               </div>
             </div>
 
             {/* Tabela Mensal */}
-            <div className="mt-8">
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <FaCalendarAlt className="text-emerald-400" />
+            <div className="mt-6 sm:mt-8">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                <FaCalendarAlt className="text-emerald-400 flex-shrink-0" />
                 Evolução Mês a Mês
               </h3>
               
-              <div className="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+              <div className="bg-gray-900 rounded-lg sm:rounded-xl border border-gray-700 overflow-hidden">
                 <div className="overflow-x-auto">
-                  <div className="max-h-96 overflow-y-auto">
-                    <table className="w-full">
+                  <div className="max-h-64 sm:max-h-96 overflow-y-auto">
+                    <table className="w-full min-w-[600px]">
                       <thead className="bg-gray-950 sticky top-0 z-10">
                         <tr>
-                          <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                          <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
                             Mês
                           </th>
-                          <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                          <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
                             Juros do Mês
                           </th>
-                          <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                          <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
                             Total Investido
                           </th>
-                          <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                          <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
                             Total de Juros
                           </th>
-                          <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
+                          <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider border-b border-gray-700">
                             Total Acumulado
                           </th>
                         </tr>
@@ -302,19 +289,19 @@ export default function CalculadoraJuros() {
                             key={linha.mes} 
                             className="hover:bg-gray-800 transition"
                           >
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                            <td className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-300">
                               {linha.mes}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-emerald-400 text-right font-medium">
+                            <td className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 whitespace-nowrap text-xs sm:text-sm text-emerald-400 text-right font-medium">
                               {formatarMoeda(linha.juros)}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-400 text-right font-medium">
+                            <td className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 whitespace-nowrap text-xs sm:text-sm text-blue-400 text-right font-medium">
                               {formatarMoeda(linha.totalInvestido)}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-emerald-400 text-right font-medium">
+                            <td className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 whitespace-nowrap text-xs sm:text-sm text-emerald-400 text-right font-medium">
                               {formatarMoeda(linha.totalJuros)}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-white text-right font-bold">
+                            <td className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 whitespace-nowrap text-xs sm:text-sm text-white text-right font-bold">
                               {formatarMoeda(linha.totalAcumulado)}
                             </td>
                           </tr>
