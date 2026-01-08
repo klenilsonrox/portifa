@@ -14,6 +14,8 @@ export default function ContatoClient() {
     tcl: 'Vim do YouTube (TV TCL) e quero o teste grátis',
     hisense: 'Vim do YouTube (Hisense) e quero o teste grátis',
     firestick: 'Vim do YouTube (Fire Stick) e quero o teste grátis',
+     tvbox: 'Vim do YouTube (TV Box) e quero o teste grátis',
+          android: 'Vim do YouTube (Android tv) e quero o teste grátis',
   }
 
   const message = encodeURIComponent(
