@@ -1,53 +1,51 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-export default function WhatsAppRedirect() {
-  useEffect(() => {
-    const phone = '5531992311170'
-    const message = 'Olá, vim do youtube e gostaria de um teste de IPTV'
-    const encodedMessage = encodeURIComponent(message)
+export default function WhatsAppCTA() {
+  const params = useSearchParams()
+  const origem = params.get('origem') || 'youtube'
 
-    // 1️⃣ tenta abrir o app direto (mobile)
-    const appUrl = `whatsapp://send?phone=${phone}&text=${encodedMessage}`
-    window.location.href = appUrl
+  const phone = '5531992311170'
 
-    // 2️⃣ fallback automático (web)
-    const fallback = setTimeout(() => {
-      window.location.href = `https://wa.me/${phone}?text=${encodedMessage}`
-    }, 1200)
+  const mensagens = {
+    firestick: 'Vim do YouTube video do (Fire Stick) e quero o teste grátis',
+    lg: 'Vim do YouTube video do (TV LG) e quero o teste grátis',
+    tcl: 'Vim do YouTube video do (TV TCL) e quero o teste grátis',
+    tvbox: 'Vim do YouTube video do (TV BOX) quero um teste grátis',
+  }
 
-    return () => clearTimeout(fallback)
-  }, [])
+  const message = encodeURIComponent(
+    mensagens[origem] || mensagens.youtube
+  )
+
+  const whatsappLink = `https://wa.me/${phone}?text=${message}`
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: 'sans-serif',
-      textAlign: 'center'
-    }}>
-      <div>
-        <h1>Redirecionando para o WhatsApp…</h1>
-        <p>Se não abrir automaticamente, aguarde alguns segundos.</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
+      <div className="max-w-md w-full bg-gray-900 border border-gray-800 rounded-2xl p-6 text-center shadow-xl">
+
+        <h1 className="text-2xl font-bold text-white mb-3">
+          📺 Teste IPTV Grátis
+        </h1>
+
+        <p className="text-gray-300 mb-6">
+          IPTV rápido, estável e compatível com sua TV.
+        </p>
 
         <a
-          href="https://wa.me/5531992311170?text=Ol%C3%A1%2C%20vim%20do%20youtube%20e%20gostaria%20de%20um%20teste%20de%20IPTV"
-          style={{
-            marginTop: 20,
-            display: 'inline-block',
-            padding: '12px 20px',
-            background: '#25D366',
-            color: '#fff',
-            borderRadius: 8,
-            textDecoration: 'none',
-            fontWeight: 'bold'
-          }}
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition"
         >
-          Abrir WhatsApp manualmente
+          👉 Receber teste grátis no WhatsApp
         </a>
+
+        <p className="text-xs text-gray-400 mt-3">
+          ⭐ Atendimento rápido • Suporte dedicado
+        </p>
+
       </div>
     </div>
   )
