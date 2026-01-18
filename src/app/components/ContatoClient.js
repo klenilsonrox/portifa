@@ -6,7 +6,7 @@ export default function ContatoClient() {
   const params = useSearchParams()
   const origem = params.get('origem') || 'youtube'
 
-  const phone = '5531992311170'
+  const phone = '5531973316166'
 
   const mensagens = {
     lg: 'Vim do YouTube (TV LG) e quero o teste grátis',
@@ -16,6 +16,7 @@ export default function ContatoClient() {
     firestick: 'Vim do YouTube (Fire Stick) e quero o teste grátis',
      tvbox: 'Vim do YouTube (TV Box) e quero o teste grátis',
           android: 'Vim do YouTube (Android tv) e quero o teste grátis',
+    youtube: 'Vim do YouTube e quero o teste grátis',
   }
 
   const message = encodeURIComponent(
