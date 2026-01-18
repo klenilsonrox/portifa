@@ -16,7 +16,8 @@ export default function ContatoClient() {
     firestick: 'Vim do YouTube (Fire Stick) e quero o teste grátis',
      tvbox: 'Vim do YouTube (TV Box) e quero o teste grátis',
           android: 'Vim do YouTube (Android tv) e quero o teste grátis',
-    youtube: 'Vim do YouTube e quero o teste grátis',
+    youtube : ' Olá, vim do youtube e gostaria de saber um teste grátis' 
+
   }
 
   const message = encodeURIComponent(
