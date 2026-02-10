@@ -11,7 +11,7 @@ const slides = [
   { img: "/images/img9.jpg", text: "Quero viver muitos momentos assim com você 💫" },
   { img: "/images/img10.jpg", text: "Feliz aniversário, meu amor 🎉🎂 Eu te amo ❤️" },
   { img: "/images/img11.jpg", text: "Cada detalhe seu me faz ter certeza do quanto eu te amo 💕" },
-  { img: "/images/img12.jpg", text: "Vocês chegram e deixaram tudo mais leve 🌸" },
+  { img: "/images/img12.jpg", text: "Vocês chegaram e deixaram tudo mais leve 🌸" },
   { img: "/images/img13.jpg", text: "Eu amo dividir a vida com vocês 💑" },
   { img: "/images/img8.jpg", text: "Seu abraço é onde meu coração descansa 🤍" },
   { img: "/images/img15.jpg", text: "Com você eu aprendi o que é amor de verdade ✨" },
